@@ -1,5 +1,5 @@
 import sqlite3
-import sys
+from decorators import try_decor
 
 
 class ConnectDB:        # The class expands the possibilities of working with the database
@@ -13,13 +13,8 @@ class ConnectDB:        # The class expands the possibilities of working with th
         self.url_service = None
         ConnectDB.count += 1
 
+    @try_decor
     def create_table(self, table, fields):
-        try:
-            self.cur.execute(f"CREATE TABLE IF NOT EXISTS {table} ({fields})")
-            print("Created the table:", table)
-            return True
-        except Exception as e:
-            print('Filed to Create table:', table)
-            print(repr(e))
-            print("Error:", sys.exc_info()[0])
-            return
+        self.cur.execute(f"CREATE TABLE IF NOT EXISTS {table} ({fields})")
+        print("Created the table:", table)
+        return True
