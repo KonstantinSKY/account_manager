@@ -1,9 +1,9 @@
-from databases import Connection
+from databases import ConnectDB
 
 
 class Account:
     count = 0
-    conn = Connection("../DB/accounts.sqlite")
+    conn = ConnectDB("../DB/accounts.sqlite")
 
     def __init__(self):
         self.login = None
