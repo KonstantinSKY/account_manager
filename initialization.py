@@ -7,11 +7,11 @@ conn = ConnectDB("../DB/accounts.sqlite")
 table = 'services'
 fields = '''
     id INTEGER PRIMARY KEY,
-    name TEXT UNIQUE NOT NULL
+    name TEXT UNIQUE NOT NULL,
     url TEXT UNIQUE NOT NULL,
     description TEXT
     '''
-print(conn.create_table(table, fields))
+conn.create_table(table, fields)
 
 table = 'accounts'
 fields = '''
