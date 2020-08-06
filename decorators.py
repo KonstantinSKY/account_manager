@@ -1,4 +1,5 @@
 import sys
+from say import Say
 
 
 def try_decor(func):            # Decorator for handling exceptions
@@ -6,8 +7,7 @@ def try_decor(func):            # Decorator for handling exceptions
         try:
             return func(*args, **kwargs)
         except Exception as e:
-            print("ERROR!!! - Cant execute function:", func)
-            print(repr(e))
-            print("Error:", sys.exc_info()[0])
+            msg = f'ERROR!!! - Cant execute function: , {func} \n{repr(e)} {sys.exc_info()[0]}'
+            Say(msg).prn_err()
 
     return inner

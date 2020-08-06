@@ -1,5 +1,6 @@
 import sqlite3
 from decorators import try_decor
+from say import Say
 
 
 class ConnectDB:        # The class expands the possibilities of working with the database
@@ -16,5 +17,5 @@ class ConnectDB:        # The class expands the possibilities of working with th
     @try_decor
     def create_table(self, table, fields):
         self.cur.execute(f"CREATE TABLE IF NOT EXISTS {table} ({fields})")
-        print("Created the table:", table)
+        Say(f"Created the table: {table}").prn_ok()
         return True
