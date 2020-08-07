@@ -13,7 +13,9 @@ class Service:
         self.description = service_obj["description"]
         if not self.id_:
             self.id_ = conn.insert(Service.table, service_obj)
-        Service.services.update({self.id_: self})
+        if self.id_:
+            conn.commit()
+            Service.services.update({self.id_: self})
 
     @classmethod
     def get_all_from_db(cls):

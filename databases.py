@@ -35,8 +35,5 @@ class ConnectDB(sqlite3.Connection):        # The class expands the possibilitie
         fields = fields.rstrip(", ")
         binds = binds.rstrip(", ")
         query = f'INSERT OR IGNORE INTO {table} ({fields}) VALUES ({binds})'
-        last_id = self.cur.execute(query, values).lastrowid
-        print(last_id)
-        self.commit()
-        return last_id
+        return self.cur.execute(query, values).lastrowid
 

@@ -1,12 +1,33 @@
+# Accounts
+from init_app import *
+
 
 class Account:
-    count = 0
+    accounts = {}
+    table = 'accounts'
 
-    def __init__(self):
-        self.login = None
-        self.password = None
-        self.url_service = None
-        Account.count += 1
+    def __init__(self, account_obj, id_=None):
+        self.id_ = id_
+        self.name = account_obj["login"]
+        self.url = account_obj["password"]
+        self.description = account_obj["id_service"]
+        if not self.id_:
+            self.id_ = conn.insert(Account.table, account_obj)
+        if self.id_:
+            conn.commit()
+            Account.accounts.update({self.id_: self})
 
-
+    @classmethod
+    def get_all_from_db(cls):
+        records = conn.select_all(cls.table)
+        if not records:
+            return
+        for record in records:
+            cls({
+                "login": record[1],
+                "password": record[2],
+                "id_service": record[3]
+            },
+                record[0]
+            )
 
