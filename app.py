@@ -48,4 +48,11 @@ def new_function():
 print(Menu.menus['main'].start())
 
 Menu.menus["main"].update_action("2", new_function)
+
+Menu.menus["main"].add_item("3", {
+    "name": "Show  all accounts",
+    "action": new_function,
+    "sub": "fourth_level"
+    })
+
 print(Menu.menus['main'].start())

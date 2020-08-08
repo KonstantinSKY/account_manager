@@ -21,7 +21,7 @@ class Menu:
         print(list(self.items.keys()))
         select = None
         while select not in list(self.items.keys()):
-            select = input("Select item and press enter")
+            select = input("Select item and press enter: ")
             if select not in list(self.items.keys()):
                 print("Wrong choice! Try again")
         print(select)
@@ -29,6 +29,15 @@ class Menu:
 
     def update_action(self, item_name, action_value):
         self.items[item_name]["action"] = action_value
-        Say(f"Menu: {self.name}, item: {item_name} updated to {action_value}").prn_ok()
+        print(f"Menu: {self.name}, item: {item_name} updated to {action_value}")
 
+    # The method add new items object to menu
+    # menu.add_item('item_name', {
+    #     "name": "items name",
+    #     "action": func,
+    #    ["sub": "name of sub level"]
+    # }
+    def add_item(self, item_name, item_obj):
+        self.items[item_name] = item_obj
+        print(f"Menu: {self.name}, added new item: {item_name}")
 
