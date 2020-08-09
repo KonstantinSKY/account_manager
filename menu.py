@@ -14,23 +14,27 @@ class Menu:
 
     def start(self):
         items = self.items
-        keys_list = list(items.keys())
-        print('=' * 100 + f'\n{self.title}\n' + '=' * 100)
-        for key in items:
-            print(key, ":", items[key]['name'])
-        print(keys_list)
-        select = None
         while True:
-            select = input("Select item and press enter: ")
-            if select in keys_list:
-                break
-            print("Wrong choice! Try again")
-        if 'action' in items[select] and isinstance(items[select]["action"], types.FunctionType):
-            items[select]['action']()
-        # sub menu
-        sub_menu = items[select]["sub"]
-        print(sub_menu)
-        if sub_menu in Menu.menus:
+            keys_list = list(items.keys())
+            print('=' * 100 + f'\n{self.title}\n' + '=' * 100)
+            for key in items:
+                print(key, ":", items[key]['name'])
+            print('='*100)
+            while True:
+                select = input("Select item and press enter: ")
+                if select in keys_list:
+                    break
+                print("Wrong choice! Try again")
+            # actions
+            if 'action' in items[select] and isinstance(items[select]["action"], types.FunctionType):
+                items[select]['action']()
+            # sub menu
+            if 'sub' not in items[select]:
+                continue
+            sub_menu = items[select]["sub"]
+            if sub_menu not in Menu.menus:
+                print(f"Can't find submenu name {sub_menu} in Menu List")
+                print(f" Menu List : {Menu.menus}")
             Menu.menus[sub_menu].start()
 
     def update_action(self, item_name, action_value):
