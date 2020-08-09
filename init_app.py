@@ -17,30 +17,34 @@ Menu({
         "items": {
             "1": {
                 "name": "Show all services",
-                "action": func,
+                "action": "ggg",
                 "sub": "Second_level"
             },
             "2": {
                 "name": "Show all persons",
-                "action": func,
+                "action": "ghjghjghj",
                 "sub": "Third_level"
             }
         }
     }
 })
-
-diction = {
-    "main": {
-        "title": "Main menu",
+Menu({
+    "Second_level": {
+        "title": "Second_level menu",
         "items": {
             "1": {
-                "name": "Show all services",
-                "action": func,
+                "name": "Show Second_level all services",
+                "action": "ghjghj",
                 "sub": "Second_level"
+            },
+            "2": {
+                "name": "Show all Second_level persons",
+                # "action": func,
+                "sub": "Third_level"
             }
         }
     }
-}
+})
 
 print(Menu.menus)
 #Menu.menus["main"].start()

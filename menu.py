@@ -1,5 +1,6 @@
 # Multi level Menu
 from say import Say
+import types
 
 
 class Menu:
@@ -9,35 +10,37 @@ class Menu:
         self.name = list(menu_obj.keys())[0]
         self.title = menu_obj[self.name]['title']
         self.items = menu_obj[self.name]['items']
-        print(self.title)
-        print(self.items)
         Menu.menus.update({self.name: self})
 
     def start(self):
-        print(self.title)
-        print("="*100)
-        for key in self.items:
-            print(key, ":", self.items[key]['name'])
-        print(list(self.items.keys()))
+        items = self.items
+        keys_list = list(items.keys())
+        print('=' * 100 + f'\n{self.title}\n' + '=' * 100)
+        for key in items:
+            print(key, ":", items[key]['name'])
+        print(keys_list)
         select = None
-        while select not in list(self.items.keys()):
+        while True:
             select = input("Select item and press enter: ")
-            if select not in list(self.items.keys()):
-                print("Wrong choice! Try again")
-        print(select)
-        self.items[select]['action']()
+            if select in keys_list:
+                break
+            print("Wrong choice! Try again")
+        if 'action' in items[select] and isinstance(items[select]["action"], types.FunctionType):
+            items[select]['action']()
+        # sub menu
+        sub_menu = items[select]["sub"]
+        print(sub_menu)
+        if sub_menu in Menu.menus:
+            Menu.menus[sub_menu].start()
 
     def update_action(self, item_name, action_value):
+        if item_name not in self.items:
+            print(f"Item  {item_name} not exist in menu: {self.name}")
+            print(f"Action  {action_value} not updated")
+            return
         self.items[item_name]["action"] = action_value
         print(f"Menu: {self.name}, item: {item_name} updated to {action_value}")
 
-    # The method add new items object to menu
-    # menu.add_item('item_name', {
-    #     "name": "items name",
-    #     "action": func,
-    #    ["sub": "name of sub level"]
-    # }
     def add_item(self, item_name, item_obj):
         self.items[item_name] = item_obj
         print(f"Menu: {self.name}, added new item: {item_name}")
-
