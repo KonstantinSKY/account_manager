@@ -1,6 +1,5 @@
 # Multi level Menu
 from say import Say
-import types
 
 
 class Menu:

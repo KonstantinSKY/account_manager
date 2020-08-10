@@ -1,14 +1,9 @@
 # Initialization data for the app
 from databases import ConnectDB
 from menu import Menu
-
+from dialogs import Dialog
 # databases
 conn = ConnectDB('../DB/accounts.sqlite')
-
-
-# # menu
-def func():
-    print("This is temporary function for action, use .update_action() for change ")
 
 
 Menu({
@@ -55,5 +50,20 @@ Menu({
     }
 })
 
-print(Menu.menus)
-#Menu.menus["main"].start()
+Dialog({
+    'add_service': {
+        'title': "Adding Web Service dialog",
+        'questions': {
+            1: {
+                'ask': "Input Service name and press Enter",
+                'condition': "Second_level"
+            },
+            2: {
+                'ask': "Input Service URL and press Enter"
+            },
+            3: {
+                'ask': "Input Service description and press Enter"
+            }
+        }
+    }
+})

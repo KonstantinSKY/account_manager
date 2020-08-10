@@ -8,6 +8,7 @@ from menu import Menu
 Menu.menus["main"].update_action("1", Service.show_all)
 Menu.menus["main"].update_action("2", Person.show_all)
 Menu.menus["main"].update_action("3", Account.show_all)
+Menu.menus["main"].update_action("4", Service.add)
 
 Service.get_all_from_db()
 print(Service.services)

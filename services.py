@@ -18,6 +18,17 @@ class Service:
             Service.services.update({self.id_: self})
 
     @classmethod
+    def add(cls):
+        dialog = Dialog.dialogs['add_service']
+        questions = dialog.questions
+        dialog.start()
+        cls({
+            "name": questions[1]['result'],
+            "url": questions[2]['result'],
+            "description": questions[3]['result']
+        })
+
+    @classmethod
     def show_all(cls):
         for key, service in cls.services.items():
             print("="*100)
