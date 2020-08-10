@@ -67,3 +67,74 @@ Dialog({
         }
     }
 })
+Dialog({
+    'add_person': {
+        'title': "Adding Person dialog",
+        'questions': {
+            1: {
+                'ask': "Input First Name and press Enter",
+                'condition': "Second_level"
+            },
+            2: {
+                'ask': "Input Second Name and press Enter"
+            },
+            3: {
+                'ask': "Input ZIP Code and press Enter"
+            },
+            4: {
+                'ask': "Input Country and press Enter"
+            },
+            5: {
+                'ask': "Input Industry Code and press Enter"
+            }
+
+        }
+    }
+})
+Dialog({
+    'add_account': {
+        'title': "Adding Person dialog",
+        'questions': {
+            1: {
+                'ask': "Input Login and press Enter",
+                'condition': "Second_level"
+            },
+            2: {
+                'ask': "Input Password and press Enter"
+            },
+            3: {
+                'ask': "Input Description and press Enter"
+            },
+        }
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

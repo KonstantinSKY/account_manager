@@ -18,6 +18,17 @@ class Account:
             Account.accounts.update({self.id_: self})
 
     @classmethod
+    def add(cls):
+        dialog = Dialog.dialogs['add_account']
+        questions = dialog.questions
+        dialog.start()
+        cls({
+            "login": questions[1]['result'],
+            "password": questions[2]['result'],
+            "description": questions[3]['result']
+        })
+
+    @classmethod
     def show_all(cls):
         for key, account in cls.accounts.items():
             print("=" * 100)

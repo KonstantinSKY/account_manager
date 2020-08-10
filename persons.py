@@ -21,6 +21,19 @@ class Person:
             Person.persons.update({self.id_: self})
 
     @classmethod
+    def add(cls):
+        dialog = Dialog.dialogs['add_person']
+        questions = dialog.questions
+        dialog.start()
+        cls({
+            "f_name": questions[1]['result'],
+            "s_name": questions[2]['result'],
+            "zip": questions[3]['result'],
+            "country": questions[4]['result'],
+            "industry": questions[5]['result'],
+        })
+
+    @classmethod
     def show_all(cls):
         for key, person in cls.persons.items():
             print("=" * 100)
