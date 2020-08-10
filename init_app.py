@@ -20,13 +20,13 @@ Menu({
                 "name": "Show all accounts",
             },
             "4": {
-                "name": "Add services",
+                "name": "Add WEB Service",
             },
             "5": {
-                "name": "Add person",
+                "name": "Add Person",
             },
             "6": {
-                "name": "Add person",
+                "name": "Add Account",
             }
 
         }
@@ -86,6 +86,9 @@ Dialog({
             },
             5: {
                 'ask': "Input Industry Code and press Enter"
+            },
+            6: {
+                'ask': "Input Description and press Enter"
             }
 
         }

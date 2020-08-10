@@ -31,6 +31,7 @@ class Person:
             "zip": questions[3]['result'],
             "country": questions[4]['result'],
             "industry": questions[5]['result'],
+            "description": questions[5]['result'],
         })
 
     @classmethod

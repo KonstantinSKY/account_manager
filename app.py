@@ -9,6 +9,8 @@ Menu.menus["main"].update_action("1", Service.show_all)
 Menu.menus["main"].update_action("2", Person.show_all)
 Menu.menus["main"].update_action("3", Account.show_all)
 Menu.menus["main"].update_action("4", Service.add)
+Menu.menus["main"].update_action("5", Person.add)
+Menu.menus["main"].update_action("6", Account.add)
 
 Service.get_all_from_db()
 print(Service.services)
