@@ -26,7 +26,8 @@ class Menu:
                     break
                 print("Wrong choice! Try again")
             # actions
-            if 'action' in items[select] and isinstance(items[select]["action"], types.FunctionType):
+            if 'action' in items[select]:
+                print("Try to Run")
                 items[select]['action']()
             # sub menu
             if 'sub' not in items[select]:

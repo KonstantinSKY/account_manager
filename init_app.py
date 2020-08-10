@@ -17,27 +17,21 @@ Menu({
         "items": {
             "1": {
                 "name": "Show all services",
-                "action": None,
             },
             "2": {
                 "name": "Show all persons",
-                "action": None,
             },
             "3": {
                 "name": "Show all accounts",
-                "action": None,
             },
             "4": {
                 "name": "Add services",
-                "action": None,
             },
             "5": {
                 "name": "Add person",
-                "action": None,
             },
             "6": {
                 "name": "Add person",
-                "action": None,
             }
 
         }

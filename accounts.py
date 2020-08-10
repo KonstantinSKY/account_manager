@@ -8,14 +8,20 @@ class Account:
 
     def __init__(self, account_obj, id_=None):
         self.id_ = id_
-        self.name = account_obj["login"]
-        self.url = account_obj["password"]
+        self.login = account_obj["login"]
+        self.password = account_obj["password"]
         self.description = account_obj["id_service"]
         if not self.id_:
             self.id_ = conn.insert(Account.table, account_obj)
         if self.id_:
             conn.commit()
             Account.accounts.update({self.id_: self})
+
+    @classmethod
+    def show_all(cls):
+        for key, account in cls.accounts.items():
+            print("=" * 100)
+            print(account.id_, account.login, account.password, account.description)
 
     @classmethod
     def get_all_from_db(cls):

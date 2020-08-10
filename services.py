@@ -18,6 +18,12 @@ class Service:
             Service.services.update({self.id_: self})
 
     @classmethod
+    def show_all(cls):
+        for key, service in cls.services.items():
+            print("="*100)
+            print(service.id_, service.name, service.url, service.description)
+
+    @classmethod
     def get_all_from_db(cls):
         records = conn.select_all(cls.table)
         if not records:

@@ -21,6 +21,13 @@ class Person:
             Person.persons.update({self.id_: self})
 
     @classmethod
+    def show_all(cls):
+        for key, person in cls.persons.items():
+            print("=" * 100)
+            print(person.id_, person.f_name, person.s_name, person.zip,
+                  person.country, person.industry, person.description)
+
+    @classmethod
     def get_all_from_db(cls):
         records = conn.select_all(cls.table)
         if not records:

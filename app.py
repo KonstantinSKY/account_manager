@@ -5,6 +5,10 @@ from accounts import Account
 from persons import Person
 from menu import Menu
 
+Menu.menus["main"].update_action("1", Service.show_all)
+Menu.menus["main"].update_action("2", Person.show_all)
+Menu.menus["main"].update_action("3", Account.show_all)
+
 Service.get_all_from_db()
 print(Service.services)
 
@@ -14,14 +18,13 @@ Service({
     "description": "test_description LinkedIn"
 })
 
-print(Service.services)
-
+print(Menu.menus)
 Person.get_all_from_db()
 print(Person.persons)
 
 Person({
-    "f_name": "LinkedIn",
-    "s_name": "LinkedIn",
+    "f_name": "John",
+    "s_name": "Smith",
     "zip": 99999,
     "country": "United States",
     "industry": "Computers",
