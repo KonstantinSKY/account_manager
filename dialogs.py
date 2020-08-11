@@ -16,18 +16,19 @@ class Dialog:
         print('=' * 100 + f'\n{self.title}\n' + '=' * 100)
         for key in sorted(questions):
             print(key)
-            questions[key]['result'] = input(questions[key]['ask'])
+            if 'select' in questions[key]:
+                print('CHOICE', questions[key]["select"])
+                questions[key]["select"]()
+            questions[key]['result'] = input(questions[key]['ask'] + " : ")
             print(questions[key]['result'])
 
-
-
-    # def update_action(self, _name, action_value):
-    #     if item_name not in self.items:
-    #         print(f"Item  {item_name} not exist in menu: {self.name}")
-    #         print(f"Action  {action_value} not updated")
-    #         return
-    #     self.items[item_name]["action"] = action_value
-    #     print(f"Menu: {self.name}, item: {item_name} updated to {action_value}")
+    def update_select(self, item_name, select_value):
+        if item_name not in self.questions:
+            print(f"Item  {item_name} not exist in menu: {self.name}")
+            print(f"Select {select_value} not updated")
+            return
+        self.questions[item_name]["select"] = select_value
+        print(f"Dialog: {self.name}, item: {item_name} updated to {select_value}")
     #
     # def add_item(self, item_name, item_obj):
     #     self.items[item_name] = item_obj

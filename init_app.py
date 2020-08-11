@@ -96,7 +96,7 @@ Dialog({
 })
 Dialog({
     'add_account': {
-        'title': "Adding Person dialog",
+        'title': "Adding Account -  dialog",
         'questions': {
             1: {
                 'ask': "Input Login and press Enter",
@@ -106,7 +106,12 @@ Dialog({
                 'ask': "Input Password and press Enter"
             },
             3: {
-                'ask': "Input Description and press Enter"
+                'ask': "Select number of Web Service for The Account",
+                'select': None
+            },
+            4: {
+                'ask': "Select number of Person from the list for The Account",
+                'select': None
             },
         }
     }

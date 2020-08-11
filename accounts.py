@@ -10,7 +10,8 @@ class Account:
         self.id_ = id_
         self.login = account_obj["login"]
         self.password = account_obj["password"]
-        self.description = account_obj["id_service"]
+        self.id_service = account_obj["id_service"]
+        self.id_person = account_obj["id_person"]
         if not self.id_:
             self.id_ = conn.insert(Account.table, account_obj)
         if self.id_:
@@ -25,7 +26,8 @@ class Account:
         cls({
             "login": questions[1]['result'],
             "password": questions[2]['result'],
-            "description": questions[3]['result']
+            "id_service": questions[3]['result'],
+            "id_person": questions[4]['result']
         })
 
     @classmethod
@@ -43,7 +45,8 @@ class Account:
             cls({
                 "login": record[1],
                 "password": record[2],
-                "id_service": record[3]
+                "id_service": record[3],
+                "id_person": record[4]
             },
                 record[0]
             )

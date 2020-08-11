@@ -33,6 +33,7 @@ class Person:
             "industry": questions[5]['result'],
             "description": questions[5]['result'],
         })
+        print("Added new Person :")
 
     @classmethod
     def show_all(cls):

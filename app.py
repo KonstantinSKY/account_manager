@@ -3,14 +3,19 @@
 from services import Service
 from accounts import Account
 from persons import Person
+from dialogs import Dialog
 from menu import Menu
 
-Menu.menus["main"].update_action("1", Service.show_all)
-Menu.menus["main"].update_action("2", Person.show_all)
-Menu.menus["main"].update_action("3", Account.show_all)
-Menu.menus["main"].update_action("4", Service.add)
-Menu.menus["main"].update_action("5", Person.add)
-Menu.menus["main"].update_action("6", Account.add)
+menu = Menu.menus["main"]
+menu.update_action("1", Service.show_all)
+menu.update_action("2", Person.show_all)
+menu.update_action("3", Account.show_all)
+menu.update_action("4", Service.add)
+menu.update_action("5", Person.add)
+menu.update_action("6", Account.add)
+dialog = Dialog.dialogs["add_account"]
+dialog.update_select(3, Service.show_all)
+dialog.update_select(4, Person.show_all)
 
 Service.get_all_from_db()
 print(Service.services)
@@ -41,7 +46,8 @@ print(Account.accounts)
 Account({
     "login": "test_login",
     "password": "test_passwd",
-    "id_service": 1
+    "id_service": 1,
+    "id_person": None
 })
 # menu
 print(Account.accounts)
